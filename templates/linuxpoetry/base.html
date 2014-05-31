@@ -68,19 +68,20 @@
         .post-frame {
           width: 640px;
           margin-top: 20px;
-          text-align: center;
         }
 
         .post-title {
           color: #222;
           font-size: 22px;
           font-weight: bold;
+          text-align: center;
         }
 
         .post-body {
           font-size: 18px;
           margin-top: 15px;
           margin-bottom: 15px;
+          text-align: {% block text-align %}center{% endblock %};
         }
 
         .timestamp {
@@ -100,17 +101,20 @@
     <div class="primary-frame">
 
       <!-- BUILDING OUR HEADING -->
-      <span class="headline"> Linux Poetry </span>
+      <span class="headline"> <a href="{% url "index" %}">Linux Poetry </a></span>
 
       <!-- NAVBAR -->
       <ul class="sub-headline top-nav">
         <li>/<a href="{% url "post" 1 %}"> about </a>/</li>
+        <li>
+            <a href="{% url "blogindex" %}"> blog </a>/
+        </li>
         <li> 
           <a
             class="twitter"
             onCLick=window.open("http://www.twitter.com/linuxpoetry")>
-            twitter 
-          </a> /
+            <img src="https://s3.amazonaws.com/linuxpoetry/twitterbird.svg" width="25px"></img>
+          </a> 
         </li>
       </ul>
 
