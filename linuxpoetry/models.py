@@ -3,7 +3,7 @@
 from django.db import models
 
 
-class PostTag(models.Model):
+class BaseTag(models.Model):
 
     """Represents some tag which should be applied to a post."""
 
@@ -15,14 +15,20 @@ class PostTag(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        abstract = True
 
-class Post(models.Model):
+
+class PostTag(BaseTag):
+    pass
+
+
+class BasePost(models.Model):
 
     """Represents a single poem/post."""
 
     title = models.TextField()
     body = models.TextField()
-    tags = models.ManyToManyField(PostTag)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -40,3 +46,18 @@ class Post(models.Model):
     def tags_str(self):
         """Returns a comma delimited list of tags."""
         return ', '.join([tag.name for tag in self.tags.all()])
+
+    class Meta:
+        abstract = True
+
+
+class Post(BasePost):
+    tags = models.ManyToManyField(PostTag)
+
+
+class BlogPostTag(BaseTag):
+    pass
+
+
+class BlogPost(BasePost):
+    tags = models.ManyToManyField(BlogPostTag)
