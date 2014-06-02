@@ -68,6 +68,7 @@
         .post-frame {
           width: 640px;
           margin-top: 20px;
+          font-family: {% block font-family %}"Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif{% endblock %};
         }
 
         .post-title {
@@ -106,16 +107,15 @@
       <!-- NAVBAR -->
       <ul class="sub-headline top-nav">
         <li>/<a href="{% url "post" 1 %}"> about </a>/</li>
-        <!--<li>
+        <li>
             <a href="{% url "blogindex" %}"> blog </a>/
-        </li>-->
+        </li>
         <li> 
           <a
             class="twitter"
             onCLick=window.open("http://www.twitter.com/linuxpoetry")>
-            <!-- <img src="https://s3.amazonaws.com/linuxpoetry/twitterbird.svg" width="25px"></img> -->
-            twitter
-          </a>/ 
+            <img src="https://s3.amazonaws.com/linuxpoetry/twitterbird.svg" width="25px"></img>
+          </a>
         </li>
       </ul>
 
