@@ -128,15 +128,23 @@
       <div class="prev-next-frame">
         <span class="prev-post"> 
             {% if prev_id %} 
-                <a href="{% url "post" prev_id %}">
+                <a href="
+                {% block prev_url %}
+                    {% url "post" prev_id %}
+                {% endblock %}
+                ">
                     <b>prev</b>
                 </a> 
             {% endif %}
         </span>
         {% if prev_id and next_id %} | {% endif %}
         <span class="next-post"> 
-            {% if next_id %} 
-                <a href="{% url "post" next_id %}">
+            {% if next_id %}
+                <a href=" 
+                {% block next_url %}
+                    {% url "post" next_id %}
+                {% endblock %}
+                ">
                     <b>next</b>
                 </a> 
             {% endif %}
