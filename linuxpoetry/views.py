@@ -1,6 +1,9 @@
 """Simply displays a page and retrieves poems."""
 
 from django.shortcuts import render_to_response
+from django.contrib.syndication.views import Feed
+from django.core.urlresolvers import reverse
+
 from linuxpoetry.models import Post, BlogPost
 
 
@@ -39,3 +42,21 @@ def index(request, post_id=None, blog=False):
 
 def blogindex(request, post_id=None):
     return index(request, post_id, True)
+
+
+class PoetryFeed(Feed):
+    title = "Linux Poetry RSS"
+    link = "/"
+    description = "Updates on the latest Linux poems."
+
+    def items(self):
+        return Post.objects.order_by('-id')[:3]
+
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        return "tags: %s" % item.tags_str
+
+    def item_link(self, item):
+        return reverse("post", args=[item.pk])
