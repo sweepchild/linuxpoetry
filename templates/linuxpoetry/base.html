@@ -158,7 +158,9 @@
         <div class="post-body">
         {% if post %} {{ post.body_with_html }} {% endif %}
         </div>
-        <span class="timestamp"> {% if post %} {{ post.updated_at|date:"m-d-Y" }} {% endif %}, <a href="http://mrrrgn.com">mrrrgn</a> </span>
+        <span class="timestamp"> {% if post %} {{ post.updated_at|date:"m-d-Y" }} {% endif %}, 
+            <a href="{% url "rss" %}">rss feed</a>
+        </span>
       </div>  
 
     </div>
