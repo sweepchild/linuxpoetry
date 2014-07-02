@@ -159,7 +159,8 @@
         {% if post %} {{ post.body_with_html }} {% endif %}
         </div>
         <span class="timestamp"> {% if post %} {{ post.updated_at|date:"m-d-Y" }} {% endif %}, 
-            <a href="{% url "rss" %}">rss feed</a>
+            <a href="{% url "rss" %}">rss feed</a> 
+            <a href="{% url "license" %}">license</a>
         </span>
       </div>  
 

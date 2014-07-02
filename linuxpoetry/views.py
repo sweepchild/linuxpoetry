@@ -3,6 +3,7 @@
 from django.shortcuts import render_to_response
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
+from django.http import HttpResponse
 
 from linuxpoetry.models import Post, BlogPost
 
@@ -42,6 +43,11 @@ def index(request, post_id=None, blog=False):
 
 def blogindex(request, post_id=None):
     return index(request, post_id, True)
+
+
+def license(request):
+    with open("license.txt") as license_text:
+        return HttpResponse(license_text.read().replace("\n", "<br/>"))
 
 
 class PoetryFeed(Feed):
