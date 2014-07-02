@@ -5,6 +5,7 @@ from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 
+from poetry.settings import SITE_ROOT
 from linuxpoetry.models import Post, BlogPost
 
 
@@ -46,7 +47,7 @@ def blogindex(request, post_id=None):
 
 
 def license(request):
-    with open("license.txt") as license_text:
+    with open(SITE_ROOT + "/license.txt") as license_text:
         return HttpResponse(license_text.read().replace("\n", "<br/>"))
 
 
