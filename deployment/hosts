@@ -1,13 +1,9 @@
-[remote:children]
-prod
-dev
-
-[servers:children]
+[webservers:children]
 prod
 dev
 
 [prod]
-ec2-54-85-222-238.compute-1.amazonaws.com nickname=prod branch=master
+ec2-54-85-222-238.compute-1.amazonaws.com nickname=prod branch=master remote_user=root
 
 [dev]
-voyabot-dev nickname=dev branch=master
+vagrant-webserver nickname=dev branch=master dev=True remote_user=vagrant
